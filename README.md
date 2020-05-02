@@ -1,0 +1,1 @@
+![Rust](https://github.com/tobni/inject-rs/workflows/Rust/badge.svg)

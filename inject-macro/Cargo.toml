@@ -1,0 +1,13 @@
+[package]
+name = "inject-macro"
+version = "0.1.0"
+authors = ["tobni <tobias.jens.nilsson@gmail.com>"]
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "1.0.23", features = ["full"] }
+quote = "1.0.6"
+proc-macro2 = "1.0.17"

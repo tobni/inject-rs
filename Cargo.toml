@@ -1,0 +1,12 @@
+[package]
+name = "inject"
+version = "0.1.0"
+authors = ["tobni <tobias.jens.nilsson@gmail.com>"]
+edition = "2018"
+
+
+[dependencies]
+inject-macro = { path = "./inject-macro" }
+
+[dev-dependencies]
+rstest = "0.6.3"

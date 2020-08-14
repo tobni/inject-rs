@@ -1,6 +1,8 @@
 ![Rust](https://github.com/tobni/inject-rs/workflows/Rust/badge.svg)
 
-Injection library inpsired by [injector](https://github.com/alecthomas/injector) for Rust. Goals: IOC + ergonomics.
+Experimental IOC library inpsired by [injector](https://github.com/alecthomas/injector) for Rust. Goals: IOC + ergonomics.
+
+See [test suite](https://github.com/tobni/inject-rs/tree/master/tests) for all supported usages.
 
 Example quick-fire usages:
 

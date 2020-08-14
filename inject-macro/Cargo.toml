@@ -1,8 +1,12 @@
 [package]
 name = "inject-macro"
 version = "0.1.0"
-authors = ["tobni <tobias.jens.nilsson@gmail.com>"]
+authors = ["Tobias Nilsson <tobias.jens.nilsson@gmail.com>"]
 edition = "2018"
+description = "Experimental IOC library for Rust, procedural macros"
+readme = "../README.md"
+repository = "https://github.com/tobni/inject-rs"
+license-file = "../LICENSE"
 
 [lib]
 proc-macro = true

@@ -4,9 +4,9 @@ use ::inject::*;
 struct Service(isize);
 
 fn main() {
-   let container = container![];
+    let container = container![];
 
-   let service = get!(&container, Service).unwrap();
+    let service = get!(&container, Service).unwrap();
 
-   assert_eq!(service.0, 0)
+    assert_eq!(service.0, 0)
 }

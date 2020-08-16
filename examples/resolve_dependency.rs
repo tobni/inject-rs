@@ -10,7 +10,7 @@ impl Instance {
 }
 
 struct Service {
-    a: Instance
+    a: Instance,
 }
 
 impl Service {
@@ -20,12 +20,9 @@ impl Service {
     }
 }
 
-
 fn main() {
     // Install a provider, this time a closure returning a value
-    let container = container![
-        |container: &Container| Ok(Instance(2))
-    ];
+    let container = container![|container: &Container| Ok(Instance(2))];
 
     let service: Service = get!(&container, Service).unwrap();
 

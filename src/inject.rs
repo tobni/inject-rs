@@ -1,8 +1,21 @@
+//! Injectable types
+//!
+//! Any type which is `'static` implements `Inject`, meaning it can be resolved by a
+//! [`Provider`](../provider/trait.Provider.html).
+//!
+//! Any type which implements `Inject` and `Default` trivially implements `InjectExt`, which means
+//! that when no provider is present, and [`get!`](../macro.get.html) is used to resolve a type,
+//! `InjectExt::inject(..)` will be invoked.
+//!
 use std::any::TypeId;
 use std::sync::Arc;
 
+/// Marker trait for an injectable type.
 pub trait Inject: 'static {}
 
+/// Trait to blanket implement an associated `inject` method for all types implementing `Default`,
+/// enabling ergonomic [`get!`](../macro.get.html) and [`call!`](../macro.call.html) usages.
+///
 pub trait InjectExt: Inject + Default {
     fn inject(container: &crate::Container) -> Result<Self, crate::InjectError> {
         Ok(Self::default())

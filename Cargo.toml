@@ -1,6 +1,6 @@
 [package]
 name = "inject"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Tobias Nilsson <tobias.jens.nilsson@gmail.com>"]
 description = "Experimental IOC library for Rust"
 edition = "2018"

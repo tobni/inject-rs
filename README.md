@@ -1,7 +1,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tobni/inject-rs/Rust)](https://github.com/tobni/inject-rs/actions?query=workflow%3ARust)
 [![Crates.io](https://img.shields.io/crates/v/inject)](https://crates.io/crates/inject)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/tobni/inject-rs)](https://github.com/tobni/inject-rs/releases)
-[![API](https://docs.rs/rand/badge.svg)](https://docs.rs/inject)
+[![API](https://docs.rs/inject/badge.svg)](https://docs.rs/inject)
 
 Experimental IOC library inpsired by [injector](https://github.com/alecthomas/injector) for Rust. Goals: IOC + ergonomics.
 

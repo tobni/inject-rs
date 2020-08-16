@@ -78,57 +78,57 @@ using `#[inject]`, `call!`, `get!` and `container!`.
 
 3. Sometimes, calling a function with injection is useful, 
     ```rust
-   use ::inject::*;
-   
-   struct Service(isize);
-   
-   impl Service {
+    use ::inject::*;
+    
+    struct Service(isize);
+    
+    impl Service {
        #[inject]
        fn new() -> Self {
-           Self
+           Self(0)
        }
     }
-   
-   #[inject] 
-   fn acts_on_service(service: Service) -> usize { 
+    
+    #[inject]
+    fn acts_on_service(service: Service) -> isize {
        2 + service.0
-   }
-   
-   fn main() {
+    }
+    
+    fn main() {
        let container = container![
            |container: &Container| Ok(Service(3))
        ];
-       
+    
        let result = call!(&container, acts_on_service).unwrap();
-       
+    
        assert_eq!(result, 5)
-   }
+    }
    ```
 4. `call!` supports a kwarg-flavored syntax
     ```rust
-   use ::inject::*;
-   
-   struct Service(isize);
-   
-   impl Service {
+    use ::inject::*;
+    
+    struct Service(isize);
+    
+    impl Service {
        #[inject]
        fn new() -> Self {
-           Self
+           Self(0)
        }
     }
-   
-   #[inject] 
-   fn acts_on_service(service: Service) -> usize { 
+    
+    #[inject]
+    fn acts_on_service(service: Service) -> isize {
        2 + service.0
-   }
-   
-   fn main() {
+    }
+    
+    fn main() {
        let container = container![];
-       
+    
        let result = call!(&container, acts_on_service, kwargs = { service: Service(2) }).unwrap();
-       
+    
        assert_eq!(result, 4)
-   }
+    }
    ```
 
 5. Dependency resolution can rely upon a type implementing the `Default` trait

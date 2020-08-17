@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/tobni/inject-rs)](https://github.com/tobni/inject-rs/releases)
 [![API](https://docs.rs/inject/badge.svg)](https://docs.rs/inject)
 
-Experimental IOC library inpsired by [injector](https://github.com/alecthomas/injector) for Rust. Goals: IOC + ergonomics.
+Experimental IOC library inspired by [injector](https://github.com/alecthomas/injector) for Rust. Goals: IOC + ergonomics.
 
 See [test suite](https://github.com/tobni/inject-rs/tree/master/tests) for all supported usages.
 

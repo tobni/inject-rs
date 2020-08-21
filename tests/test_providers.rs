@@ -1,5 +1,5 @@
-use ::inject::*;
 use ::inject::providers::DefaultProvider;
+use ::inject::*;
 
 #[derive(Debug, PartialEq, Clone, Copy, Default)]
 struct FakeImpl {

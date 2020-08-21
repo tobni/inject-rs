@@ -32,7 +32,6 @@ impl<T: Inject + Default> InjectExt for T {}
 mod tests {
     use std::sync::Arc;
 
-
     use super::*;
 
     #[derive(Debug, PartialEq, Clone, Copy)]

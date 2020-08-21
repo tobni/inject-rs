@@ -3,10 +3,10 @@ use std::collections::HashSet;
 use argument::{DefaultArgs, InjectArgument, Mergable, NoInjectArgs};
 use proc_macro2::TokenStream;
 use quote::quote;
-use syn::{Error, Expr, Ident, Result, Token};
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::spanned::Spanned;
+use syn::{Error, Expr, Ident, Result, Token};
 
 use crate::inject::input::InjectableSignature;
 

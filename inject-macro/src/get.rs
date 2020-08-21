@@ -1,7 +1,7 @@
 use proc_macro2::TokenStream;
 use quote::quote;
-use syn::{Expr, LitBool, Path, Result, Token};
 use syn::parse::{Parse, ParseStream};
+use syn::{Expr, LitBool, Path, Result, Token};
 
 use crate::bool_to_option::BoolToOption;
 
@@ -66,7 +66,7 @@ impl Get {
                     (#expr)
                         .get::<#ident>()
                         #fallback
-                    
+
                 }
             }
         } else {

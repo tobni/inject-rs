@@ -129,9 +129,12 @@ mod tests {
         };
 
         let expected = quote! {
-            (&container)
-                .get::<A<isize > >()
-                .or_else(|_| < A < isize > >::inject(& container ) )
+            {
+                use ::inject::{Inject, InjectExt};
+                (&container)
+                    .get::<A<isize > >()
+                    .or_else(|_| < A < isize > >::inject(& container ) )
+            }
         };
 
         let get: TokenStream = parse2::<Get>(tree).unwrap().expand();
@@ -146,7 +149,10 @@ mod tests {
         };
 
         let expected = quote! {
-            (&container).get::<Arc<A<isize > > >()
+            {
+                use ::inject::{Inject, InjectExt};
+                (&container).get::<Arc<A<isize > > >()
+            }
         };
 
         let get: TokenStream = parse2::<Get>(tree).unwrap().expand();

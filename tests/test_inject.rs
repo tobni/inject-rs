@@ -53,7 +53,7 @@ fn test_construct_with_arc_dependecy(
 }
 
 #[rstest]
-fn test_install_singleton_returns_same_instance(data: Data, arc_data: ArcData) {
+fn test_install_singleton_returns_same_instance() {
     let container = container![singleton!(Data), singleton!(ArcData),];
 
     let injected_data_1 = get!(&container, std::sync::Arc<Data>).unwrap();

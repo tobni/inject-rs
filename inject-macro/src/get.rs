@@ -1,10 +1,9 @@
-use crate::bool_to_option::BoolToOption;
-use proc_macro2::{Span, TokenStream};
+use proc_macro2::TokenStream;
 use quote::quote;
-use std::collections::HashSet;
-use std::iter::FromIterator;
+use syn::{Expr, LitBool, Path, Result, Token};
 use syn::parse::{Parse, ParseStream};
-use syn::{AngleBracketedGenericArguments, Expr, Ident, LitBool, Path, Result, Token};
+
+use crate::bool_to_option::BoolToOption;
 
 mod kw {
     syn::custom_keyword!(create);
@@ -104,10 +103,11 @@ impl Parse for Get {
 
 #[cfg(test)]
 mod tests {
-    use super::Get;
     use proc_macro2::TokenStream;
     use quote::{quote, ToTokens};
     use syn::parse2;
+
+    use super::Get;
 
     #[test]
     fn test_parsing_args() {

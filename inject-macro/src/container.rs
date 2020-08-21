@@ -15,8 +15,8 @@ impl Container {
                  ref_token,
                  provider,
              }| match ref_token {
-                Some(_) => quote! { container.install_ref(#provider) },
-                None => quote! { container.install(#provider) },
+                Some(_) => quote! { container.install_ref(#[allow(unused_variables)] #provider) },
+                None => quote! { container.install(#[allow(unused_variables)] #provider) },
             },
         );
 

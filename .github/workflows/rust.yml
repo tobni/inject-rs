@@ -17,5 +17,7 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
+    - name: Run macro tests
+      run: cargo test --manifest-path ./inject-macro/Cargo.toml
     - name: Run examples
       run: cargo test --examples --verbose

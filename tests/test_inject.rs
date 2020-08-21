@@ -41,7 +41,7 @@ fn test_construct_with_generic_dependency(generic_data: GenericData<DependsOnDat
 }
 
 #[rstest]
-fn test_construct_with_arc_dependecy(
+fn test_construct_with_arc_dependency(
     arc_data: ArcData,
     data_arc_provider: impl Provider + 'static,
 ) {

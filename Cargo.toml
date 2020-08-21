@@ -1,6 +1,6 @@
 [package]
 name = "inject"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Tobias Nilsson <tobias.jens.nilsson@gmail.com>"]
 description = "Experimental IOC library for Rust"
 edition = "2018"
@@ -12,7 +12,7 @@ categories = ["config"]
 
 
 [dependencies]
-inject-macro = { path = "./inject-macro", version = "0.1.0" }
+inject-macro = { path = "./inject-macro", version = "0.1.1" }
 
 [dev-dependencies]
 rstest = "0.6.3"

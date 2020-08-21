@@ -1,6 +1,6 @@
 [package]
 name = "inject-macro"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Tobias Nilsson <tobias.jens.nilsson@gmail.com>"]
 edition = "2018"
 description = "Experimental IOC library for Rust, procedural macros"

@@ -50,6 +50,7 @@ impl Inject {
         };
 
         quote! {
+            #[allow(dead_code)]
             #origin
             #expansion
         }

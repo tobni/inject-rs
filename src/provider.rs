@@ -71,7 +71,7 @@ pub trait Provider {
 impl<T: ?Sized + 'static> Provider for Arc<T> {
     type ProvidedType = Self;
 
-    fn provide(&self, container: &Container) -> Result<Self::ProvidedType, InjectError> {
+    fn provide(&self, _container: &Container) -> Result<Self::ProvidedType, InjectError> {
         Ok(Arc::clone(&self))
     }
 }

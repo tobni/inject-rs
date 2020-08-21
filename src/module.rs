@@ -1,7 +1,3 @@
-use crate::inject::Inject;
-use crate::provider::{Provider, RefProvider};
-use crate::Container;
-
 #[macro_export]
 macro_rules! singleton {
     ($injectable:ty) => {{

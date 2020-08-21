@@ -1,5 +1,4 @@
 use ::inject::*;
-
 use ::inject::providers::DefaultProvider;
 
 #[derive(Debug, PartialEq, Clone, Copy, Default)]
@@ -25,7 +24,7 @@ impl RefProvider for RefProvide {
 
     fn provide<'a>(
         &'a self,
-        container: &'a Container,
+        _container: &'a Container,
     ) -> Result<&'a Self::ProvidedRef, InjectError> {
         Ok(&self.fake_impl)
     }
@@ -40,7 +39,7 @@ impl RefProvider for BoxProvider {
 
     fn provide<'a>(
         &'a self,
-        container: &'a Container,
+        _container: &'a Container,
     ) -> Result<&'a Self::ProvidedRef, InjectError> {
         Ok(&self.a)
     }

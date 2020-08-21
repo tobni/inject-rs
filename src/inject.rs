@@ -8,7 +8,6 @@
 //! `InjectExt::inject(..)` will be invoked.
 //!
 use std::any::TypeId;
-use std::sync::Arc;
 
 /// Marker trait for an injectable type.
 pub trait Inject: 'static {}
@@ -17,7 +16,7 @@ pub trait Inject: 'static {}
 /// enabling ergonomic [`get!`](../macro.get.html) and [`call!`](../macro.call.html) usages.
 ///
 pub trait InjectExt: Inject + Default {
-    fn inject(container: &crate::Container) -> Result<Self, crate::InjectError> {
+    fn inject(_container: &crate::Container) -> Result<Self, crate::InjectError> {
         Ok(Self::default())
     }
 }
@@ -31,8 +30,10 @@ impl<T: Inject + Default> InjectExt for T {}
 
 #[cfg(test)]
 mod tests {
+    use std::sync::Arc;
+
+
     use super::*;
-    use crate::inject::Inject;
 
     #[derive(Debug, PartialEq, Clone, Copy)]
     struct FakeImpl {

@@ -98,8 +98,8 @@ impl Inject {
             macro_rules! #macro_name {
                 ($container:expr #( $(, #inputs : $#inputs:expr )?  )* ) => {
                     {
-                        let __helper = |container: &::inject::Container| {
-                            Ok(#name ( #( #macro_expansion ! ( $container, #inputs $( #inputs : $#inputs )? ) ,)* ))
+                        let __helper = |__container: &::inject::Container| {
+                            Ok(#name ( #( #macro_expansion ! ( __container, #inputs $( #inputs : $#inputs )? ) ,)* ))
                         };
                         let result: Result<_, ::inject::InjectError> = __helper($container);
                         result

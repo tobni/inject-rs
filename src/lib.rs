@@ -7,7 +7,7 @@
 //!
 //! To get you started quickly, there are 3 procedural macros and one attribute macro to keep track of:
 //! [`container!`](macro.container.html), [`get!`](macro.get.html), [`call!`](macro.call.html) and
-//! [`#[inject]`](macro.inject.html).
+//! [`#[inject]`](attr.inject.html).
 //!
 //! [`container!`](macro.container.html) constructs a new container with [providers](provider/index.html).
 //!
@@ -64,7 +64,7 @@ use std::sync::Arc;
 /// 1. The first argument can be any expression, and should return a
 /// reference to a [`Container`](struct.Container.html) instance.
 /// 2. The second argument should be the name of a function that has been annotated using the
-/// #[inject] attribute.
+/// [`#[inject]`](attr.inject.html) attribute.
 /// 3. Optionally, a sequence of keyword-value-arguments (kwargs) can be supplied on the form
 /// `kwargs = {arg1: expr1, arg2: expr2}`, for a method with arguments
 ///
@@ -193,7 +193,8 @@ pub use inject_macro::get;
 
 /// Generate functionality for a function/constructor to be injectable
 ///
-/// #[inject] accepts two positions: in a "free" function, or a struct impl method that returns `Self`.
+/// [`#[inject]`](attr.inject.html) accepts two positions:
+/// in a "free" function, or a struct impl method that returns `Self`.
 ///
 /// # Examples
 ///

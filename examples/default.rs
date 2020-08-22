@@ -1,4 +1,4 @@
-use ::inject::*;
+use inject::{container, get};
 
 #[derive(Default)]
 struct Service(isize);

@@ -1,4 +1,4 @@
-use ::inject::*;
+use ::inject::{container, get, inject, Container};
 
 struct Instance(pub isize);
 

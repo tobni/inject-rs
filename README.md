@@ -15,7 +15,7 @@ using `#[inject]`, `call!`, `get!` and `container!`.
     ```rust
     use std::sync::Arc;
     
-    use ::inject::*;
+    use ::inject::{container, get, inject};
     
     struct Instance(pub isize);
     
@@ -28,15 +28,13 @@ using `#[inject]`, `call!`, `get!` and `container!`.
     
     fn main() {
         let provider = Arc::new(Instance(3));
-        
+    
         // Install the Arc as a reference provider, anytime using get!
         // will resolve to a reference of this Arc.
-        let container = container![
-            ref provider
-        ];
+        let container = container![ref provider];
     
         let instance: &Instance = get!(&container, &Instance).unwrap();
-        
+    
         assert_eq!(3, instance.0)
     }
     ```
@@ -44,8 +42,8 @@ using `#[inject]`, `call!`, `get!` and `container!`.
 2. Let the container resolve a dependency, using a closure as provider
 
     ```rust
-    use ::inject::*;
-   
+    use ::inject::{Container, container, get, inject};
+    
     struct Instance(pub isize);
     
     impl Instance {
@@ -56,7 +54,7 @@ using `#[inject]`, `call!`, `get!` and `container!`.
     }
     
     struct Service {
-        a: Instance
+        a: Instance,
     }
     
     impl Service {
@@ -66,88 +64,83 @@ using `#[inject]`, `call!`, `get!` and `container!`.
         }
     }
     
-    
     fn main() {
         // Install a provider, this time a closure returning a value
-        let container = container![
-            |container: &Container| Ok(Instance(2))
-        ];
+        let container = container![|container: &Container| Ok(Instance(2))];
     
         let service: Service = get!(&container, Service).unwrap();
-        
+    
         assert_eq!(service.a.0, 2)
     }
     ```
 
 3. Sometimes, calling a function with injection is useful, 
     ```rust
-    use ::inject::*;
+    use ::inject::{call, Container, container, inject};
     
     struct Service(isize);
     
     impl Service {
-       #[inject]
-       fn new() -> Self {
-           Self(0)
-       }
+        #[inject]
+        fn new() -> Self {
+            Self(0)
+        }
     }
     
     #[inject]
     fn acts_on_service(service: Service) -> isize {
-       2 + service.0
+        2 + service.0
     }
     
     fn main() {
-       let container = container![
-           |container: &Container| Ok(Service(3))
-       ];
+        let container = container![|container: &Container| Ok(Service(3))];
     
-       let result = call!(&container, acts_on_service).unwrap();
+        let result = call!(&container, acts_on_service).unwrap();
     
-       assert_eq!(result, 5)
+        assert_eq!(result, 5)
     }
    ```
 4. `call!` supports a kwarg-flavored syntax
     ```rust
-    use ::inject::*;
+    use ::inject::{call, container, inject};
     
     struct Service(isize);
     
     impl Service {
-       #[inject]
-       fn new() -> Self {
-           Self(0)
-       }
+        #[inject]
+        fn new() -> Self {
+            Self(0)
+        }
     }
     
     #[inject]
     fn acts_on_service(service: Service) -> isize {
-       2 + service.0
+        2 + service.0
     }
     
     fn main() {
-       let container = container![];
+        let container = container![];
     
-       let result = call!(&container, acts_on_service, kwargs = { service: Service(2) }).unwrap();
+        let result = call!(&container, acts_on_service, kwargs = { service: Service(2) }).unwrap();
     
-       assert_eq!(result, 4)
+        assert_eq!(result, 4)
     }
    ```
 
 5. Dependency resolution can rely upon a type implementing the `Default` trait
     ```rust
-   use ::inject::*;
-   
-   #[derive(Default)]
-   struct Service(isize);
-   
-   fn main() {
-       let container = container![];
-       
-       let service = get!(&container, Service).unwrap();
-       
-       assert_eq!(service.0, 0)
-   }
+    use inject::{container, get};
+    
+    #[derive(Default)]
+    struct Service(isize);
+    
+    fn main() {
+        let container = container![];
+    
+        let service = get!(&container, Service).unwrap();
+    
+        assert_eq!(service.0, 0)
+    }
    ```
 
 

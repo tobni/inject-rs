@@ -12,7 +12,7 @@
 //!
 //! For convenience, `Box`, `Rc` and `Arc` types all implement `RefProvider`.
 //! ```
-//! use ::inject::*;
+//! use inject::{container, get, RefProvider};
 //!
 //! let container = container![];
 //!
@@ -25,7 +25,8 @@
 //! ```
 //! use std::sync::Arc;
 //!
-//! use ::inject::*;
+//! use inject::{container, get, Provider};
+//!
 //! let arc = Arc::new(5isize);
 //! let container = container![
 //!     arc
@@ -38,7 +39,7 @@
 //! also serves as factory functions for providing values as they implement `Provider`.
 //!
 //! ```
-//! use ::inject::*;
+//! use inject::{Container, container, get};
 //!
 //! let container = container![
 //!     |container: &Container| Ok(5usize)

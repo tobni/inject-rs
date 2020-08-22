@@ -20,7 +20,7 @@
 //! # Example
 //!
 //! ```
-//! use ::inject::*;
+//! use ::inject::{container, get, inject};
 //!
 //! struct Connection(isize);
 //!
@@ -71,7 +71,7 @@ use std::sync::Arc;
 /// # Examples
 ///
 /// ```
-/// use ::inject::*;
+/// use ::inject::{call, container, inject};
 ///
 /// // A function that can be called with call!(..)
 /// #[inject]
@@ -99,7 +99,7 @@ use std::sync::Arc;
 /// installed provider for the invoking of the function.
 ///
 /// ```
-/// use ::inject::*;
+/// use ::inject::{call, Container, container, inject};
 ///
 /// // A struct which is allowed to be constructed
 /// // with a provided "isize" type.
@@ -158,7 +158,7 @@ pub use inject_macro::container;
 /// # Example
 ///
 /// ```
-/// use ::inject::*;
+/// use inject::{Container, get};
 ///
 /// // Derive default for brevity, see #[inject] for more intricate usages.
 /// #[derive(Default)]
@@ -200,7 +200,7 @@ pub use inject_macro::get;
 /// When in struct impl position, a new associated method `inject` is generated, in which
 /// the `get!` macro is invoked for each argument.
 /// ```
-/// use ::inject::*;
+/// use ::inject::{Container, inject};
 ///
 /// #[derive(Debug, PartialEq)]
 /// struct A(String);
@@ -221,7 +221,7 @@ pub use inject_macro::get;
 /// enables injection and kwarg-style resolution of the function arguments.
 ///
 /// ```
-/// use ::inject::*;
+/// use ::inject::{call, Container, container, inject};
 ///
 /// #[inject]
 /// fn injectable(a: usize, b: usize) -> usize { a + b }
@@ -270,7 +270,7 @@ pub mod providers;
 /// # Example
 ///
 /// ```
-/// use ::inject::*;
+/// use inject::{Container, container};
 ///
 /// let reference_provider = Box::new(5usize);
 /// let container = container![
@@ -336,7 +336,7 @@ impl Container {
     ///
     /// # Example
     /// ```
-    /// use ::inject::*;
+    /// use inject::{Container, container};
     ///
     /// let container = container![|container: &Container| Ok(2usize)];
     /// let child_container = container.create_child();

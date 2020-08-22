@@ -1,4 +1,4 @@
-use ::inject::*;
+use ::inject::{call, container, inject, Container};
 
 struct Service(isize);
 

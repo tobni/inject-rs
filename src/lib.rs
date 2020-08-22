@@ -282,7 +282,7 @@ pub mod providers;
 /// assert_eq!(2i32, container.get().unwrap());
 ///
 /// ```
-#[derive(Debug, Default)]
+#[derive(Clone, Debug, Default)]
 pub struct Container {
     providers: HashMap<TypeId, Arc<dyn Any>>,
 }
@@ -329,6 +329,22 @@ impl Container {
             .downcast_ref::<Box<dyn RefProvider<ProvidedRef = T>>>()
             .ok_or_else(|| InjectError::FailedCast)?;
         provider.provide(self)
+    }
+
+    /// Clones the `Container`, returning a new container with the same providers. This is exactly
+    /// equal to `Container::clone(&container)`.
+    ///
+    /// # Example
+    /// ```
+    /// use ::inject::*;
+    ///
+    /// let container = container![|container: &Container| Ok(2usize)];
+    /// let child_container = container.create_child();
+    ///
+    /// assert_eq!(child_container.get::<usize>(), container.get())
+    /// ```
+    pub fn create_child(&self) -> Self {
+        self.clone()
     }
 
     fn box_provider<T: 'static, P: 'static + Provider<ProvidedType = T>>(
